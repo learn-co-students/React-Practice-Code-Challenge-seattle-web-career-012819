@@ -46,6 +46,10 @@ class App extends Component {
     })
   }
 
+  componentDidMount = () => {
+    this.handleMoreSushiClick()
+  }
+
   handleMoreSushiClick = () => {
     fetch(API)
     .then(results => {

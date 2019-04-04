@@ -1,10 +1,6 @@
 // import React, { Fragment } from 'react'
 import React, { Component } from 'react'
 
-
-
-// const Sushi = (props) => {
-
 class Sushi extends Component {
 
   constructor(props) {
@@ -13,7 +9,7 @@ class Sushi extends Component {
   }
 
  eatSushi = () => {
-   if (this.props.balance > this.props.sushiObject.price) {
+   if (this.props.balance >= this.props.sushiObject.price) {
     this.setState({eaten: true})
     this.props.buySushi(this.props.sushiObject.price, this.props.sushiObject.id)
     console.log('eaten', this.state.eaten)
