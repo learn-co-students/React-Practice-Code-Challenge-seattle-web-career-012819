@@ -13,7 +13,7 @@ class App extends Component {
     }
   }
 
-  getSushi = () => {
+  componentDidMount() {
     fetch(API)
     .then(resp => resp.json())
     .then(response => {
@@ -24,9 +24,8 @@ class App extends Component {
   render() {
     return (
       <div className="app">
-        <SushiContainer
-          allSushi={this.getSushi}
-        />
+      
+        <SushiContainer list={this.state.items}/>
         <Table />
       </div>
     );
