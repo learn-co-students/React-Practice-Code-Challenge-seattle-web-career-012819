@@ -11,7 +11,8 @@ class App extends Component {
     this.state={
       allSushi: [],
       start: 0,
-      money: 100
+      money: 100,
+      platesEaten: 0
     }
   }
 
@@ -41,17 +42,24 @@ eatMe = (id, price) => {
   })
   this.setState({
     allSushi: updatedSushi,
-    money: this.state.money - price
+    money: this.state.money - price,
+    platesEaten: this.state.platesEaten +1
   })
   }
 }
 
 
+incrementStart =() => {
+  this.setState({
+    start: this.state.start + 4
+  })
+}
+
   render() {
     return (
       <div className="app">
-        <SushiContainer sushiToDisplay ={this.sushiToDisplay()} eatMe={this.eatMe}/>
-        <Table />
+        <SushiContainer sushiToDisplay ={this.sushiToDisplay()} eatMe={this.eatMe} incrementStart={this.incrementStart}/>
+        <Table money={this.state.money} platesEaten={this.state.platesEaten}/>
       </div>
     );
   }

@@ -2,7 +2,7 @@ import React, { Fragment } from 'react'
 import MoreButton from '../components/MoreButton'
 import Sushi from '../components/Sushi.js'
 
-const SushiContainer = ({sushiToDisplay, eatMe}) => {
+const SushiContainer = ({sushiToDisplay, eatMe, incrementStart}) => {
 
   return (
     <Fragment>
@@ -11,7 +11,7 @@ const SushiContainer = ({sushiToDisplay, eatMe}) => {
 
           <Sushi key={sushi.id} sushi={sushi} eatMe={eatMe} />
         ))}
-        <MoreButton />
+        <MoreButton incrementStart={incrementStart}/>
       </div>
     </Fragment>
   )
