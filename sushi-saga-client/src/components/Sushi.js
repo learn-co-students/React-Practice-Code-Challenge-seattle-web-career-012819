@@ -1,20 +1,21 @@
-import React, { Fragment } from 'react'
+import React from 'react'
+
 
 const Sushi = (props) => {
+
   return (
     <div className="sushi">
       <div className="plate" 
-           onClick={/* Give me a callback! */ null}>
+           onClick={(ev) => {props.eatSushi(ev, props.sush)}}>
         { 
-          /* Tell me if this sushi has been eaten! */ 
-          true ?
-            null
+          props.sush.isEaten ?
+          null
           :
-            <img src={/* Give me an image source! */} width="100%" />
+          <img src={props.sush.img_url} width="100%" alt="yo"/>
         }
       </div>
       <h4 className="sushi-details">
-        {/* Give me a name! */} - ${/* Give me a price! */}
+        {props.sush.name} - ${props.sush.price}
       </h4>
     </div>
   )
