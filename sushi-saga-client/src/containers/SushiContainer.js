@@ -1,19 +1,50 @@
-import React, { Fragment } from 'react'
+import React, { Component } from 'react';
 import MoreButton from '../components/MoreButton'
+import Sushi from '../components/Sushi.js'
 
-const SushiContainer = (props) => {
-  return (
-    <Fragment>
+class SushiContainer extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      index: 0,
+    }
+    this.alterCurrentFour = this.alterCurrentFour.bind(this)
+    this.currentFour = this.currentFour.bind(this)
+    this.eatSushi = this.eatSushi.bind(this)
+  }
+
+  currentFour(){
+    let tempSush;
+    tempSush=this.props.soosh.slice(this.state.index, this.state.index + 4)
+    return tempSush
+  }
+
+  alterCurrentFour(){
+    if(this.state.index < 96){
+    let tempNum = this.state.index+4
+      this.setState({index: tempNum})
+    }
+      else {
+        this.setState({index: 0})
+      }
+  }
+  
+  eatSushi(ev, sushi){
+    this.props.updater(sushi)
+  }
+
+  render(){ 
+    return (
       <div className="belt">
         {
-          /* 
-             Render Sushi components here!
-          */
+          this.currentFour().map(sushi => {
+            return <Sushi sush={sushi} key={sushi.id} eatSushi={this.eatSushi}/>
+          })
         }
-        <MoreButton />
+        <MoreButton alterCurrentFour={this.alterCurrentFour}/>
       </div>
-    </Fragment>
-  )
+    )
+  }
 }
 
 export default SushiContainer
