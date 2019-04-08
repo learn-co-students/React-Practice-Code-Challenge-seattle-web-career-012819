@@ -3,14 +3,18 @@ import MoreButton from '../components/MoreButton'
 import Sushi from '../components/Sushi.js'
 
 const SushiContainer = (props) => {
-  const sushis = props.list.map((sushi) => {
-    return <Sushi name={sushi.name} src={sushi.img_url} price={sushi.price} key={sushi.id} />
-  })
+  function showFour(list){
+    return list.slice(props.index, props.index + 4)
+  }
   return (
     <Fragment>
       <div className="belt">
-        {sushis}
-        <MoreButton />
+        {
+          showFour(props.sushis).map(sushi=> {
+          return <Sushi key={sushi.id} sushi={sushi} eatSushi={props.eatSushi} />
+        })
+      }
+        <MoreButton moreSushi={props.moreSushi}/>
       </div>
     </Fragment>
   )
